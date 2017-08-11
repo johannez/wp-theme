@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "wysiwyg.css",
+	"sources": [
+		"../sass/theme/wysiwyg.scss",
+		"../sass/base/_variables.scss"
+	],
+	"mappings": "",
+	"names": []
+}

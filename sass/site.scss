@@ -1,0 +1,18 @@
+/*
+	Theme Name: MY THEME
+	Description: Based on Timber Starter Theme
+	Author: Johannes Schmidt
+	Author URI: http://johannesschmidt.ca
+*/
+
+// Base with Bourbon and Bitters.
+@import "base/base";
+
+// Components
+@import "components/components";
+
+// Layout
+@import "layout/layout";
+
+// Theme
+@import "theme/theme";

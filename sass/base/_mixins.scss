@@ -1,0 +1,23 @@
+@mixin screen-small {
+  @media screen and (min-width: #{$small-screen}) and (max-width: #{$medium-screen - 1px}) {
+    @content;
+  }
+}
+
+@mixin screen-medium {
+  @media screen and (min-width: #{$medium-screen}) and (max-width: #{$large-screen - 1px}) {
+    @content;
+  }
+}
+
+@mixin screen-medium-up {
+  @media screen and (min-width: #{$medium-screen}) {
+    @content;
+  }
+}
+
+@mixin screen-large {
+  @media screen and (min-width: #{$large-screen}) {
+    @content;
+  }
+}
