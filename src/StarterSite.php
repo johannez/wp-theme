@@ -17,7 +17,7 @@ class StarterSite extends TimberSite {
         add_action('login_head', [$this, 'loginStylesheet']);
 
         // Add ACF options page.
-        acf_add_options_page();
+        //acf_add_options_page();
 
         $this->addImageSizes();
         $this->routes();
@@ -141,7 +141,7 @@ class StarterSite extends TimberSite {
         return $text;
     }
 
-    protected function addToContext( $context ) {
+    public function addToContext( $context ) {
         $main_menu = new \TimberMenu();
 //        $meta_menu = new \TimberMenu(3);
 
@@ -160,7 +160,7 @@ class StarterSite extends TimberSite {
         return $context;
     }
 
-    protected function addToTwig( $twig ) {
+    public function addToTwig( $twig ) {
 
         $twig->addExtension( new Twig_Extension_StringLoader() );
 
@@ -170,19 +170,19 @@ class StarterSite extends TimberSite {
         return $twig;
     }
 
-    protected function logoUrl() {
+    public function logoUrl() {
         return home_url();
     }
 
-    protected function editorStyles() {
+    public function editorStyles() {
         add_editor_style( 'css/wysiwyg.css' );
     }
 
-    protected function loginStylesheet() {
+    public function loginStylesheet() {
         echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/css//site.css" />';
     }
 
-    protected function removeRoles() {
+    public function removeRoles() {
         if (get_role('author')) {
             remove_role('author');
         }

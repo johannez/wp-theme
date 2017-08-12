@@ -2,11 +2,11 @@
 
 (function() {
 
-    if (typeof window.MY_THEME === "undefined") {
-        window.MY_THEME = {};
+    if (typeof window.SITE === "undefined") {
+        window.SITE = {};
     }
 
-    MY_THEME.mainMenuDropDown = function() {
+    SITE.mainMenuDropDown = function() {
         $('#nav-main > ul > li.menu-item-has-children').hover(function() {
             if (!$(this).hasClass('open')) {
                 $(this).addClass('open');
@@ -27,7 +27,7 @@ $(function () {
     svg4everybody();
 
     // Handle main menu dropdowns.
-    mainMenuDropDown();
+    SITE.mainMenuDropDown();
 
 });
 //# sourceMappingURL=site.js.map

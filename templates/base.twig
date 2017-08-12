@@ -41,10 +41,10 @@
 	<body class="{{body_class}}" data-template="base.twig">
 		<div id="page">
 			{% block header %}
-				{% include 'layout/header.twig' %}
+				{% include 'partials/header.twig' %}
 			{% endblock %}
 
-			{% include 'partials/search-form.twig' %}
+			{#{% include 'partials/search-form.twig' %}#}
 
 			<section id="content" role="main" class="content-wrapper">
 				<div class="wrapper {{sidebar_class}}">
@@ -60,7 +60,7 @@
 			</section>
 
 			{% block footer %}
-				{% include 'layout/footer.twig' %}
+				{% include 'partials/footer.twig' %}
 			{% endblock %}
 		</div>
 
@@ -82,9 +82,9 @@
 			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/slick.min.js?ver=1.6.0"></script>
 
 			{% if site.debug %}
-			<script type="text/javascript" src="{{ site.theme.link }}/js/build/scripts.js"></script>
+				<script type="text/javascript" src="{{ site.theme.link }}/js/build/site.js"></script>
 			{% else %}
-			<script type="text/javascript" src="{{ site.theme.link }}/js/build/scripts.min.js"></script>
+				<script type="text/javascript" src="{{ site.theme.link }}/js/build/site.min.js"></script>
 			{% endif %}
 		{% endblock %}
 
