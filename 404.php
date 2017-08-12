@@ -10,4 +10,7 @@
  */
 
 $context = Timber::get_context();
-Timber::render( '404.twig', $context );
+
+$context['body_class'] .= ' page--404';
+
+Timber::render( 'page/404.twig', $context );

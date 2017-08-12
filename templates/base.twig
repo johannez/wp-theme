@@ -1,44 +1,93 @@
-{% block html_head_container %}
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{site.language_attributes}}> <!--<![endif]-->
+	<head>
+		<meta charset="{{site.charset}}" />
+		<title>{{ wp_title ? wp_title ~ ' - ' ~ site.name : site.name }}</title>
+		<meta name="description" content="{{site.description}}">
+		<link rel="stylesheet" href="{{site.theme.link}}/style.css" type="text/css" media="screen" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="pingback" href="{{site.pingback_url}}" />
 
-{% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
+		<!-- favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ site.theme.link }}/img/favicon/apple-icon.png">
+		<link rel="icon" type="image/png" href="{{ site.theme.link }}/img/favicon/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="{{ site.theme.link }}/img/favicon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="{{ site.theme.link }}/img/favicon/manifest.json">
+		<meta name="theme-color" content="#ffffff">
+		<!-- end favicon -->
+
+		{{function('wp_head')}}
+
+
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" rel="stylesheet">
+
+		{% block styles %}
+			<link rel="stylesheet" href="{{ site.theme.link }}/css/vendor/select2.min.css?ver=4.0.3" type="text/css">
+			<link rel="stylesheet" href="{{ site.theme.link }}/css/vendor/jquery.mmenu.all.css?ver=6.1.0" type="text/css">
+
+			{% if site.debug %}
+				<link rel="stylesheet" href="{{ site.theme.link }}/css/site.css" type="text/css">
+			{% else %}
+				<link rel="stylesheet" href="{{ site.theme.link }}/css/site.min.css" type="text/css">
+			{% endif %}
+		{% endblock %}
 	</head>
-{% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<header class="header" >
+		<div id="page">
 			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'menu': menu.get_items} %}
-					</nav><!-- #nav -->
-				</div>
+				{% include 'layout/header.twig' %}
 			{% endblock %}
-		</header>
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
+			{% include 'partials/search-form.twig' %}
+
+			<section id="content" role="main" class="content-wrapper">
+				<div class="wrapper {{sidebar_class}}">
+					{% block content %}
+						Sorry, no content
+					{% endblock %}
+				</div>
+				{% if sidebar %}
+					<aside class="layout-sidebar">
+						{{sidebar}}
+					</aside>
+				{% endif %}
+			</section>
+
+			{% block footer %}
+				{% include 'layout/footer.twig' %}
+			{% endblock %}
+		</div>
+
+		<div id="mobile-menu-container">
+			<nav id="nav-mobile" class="nav-mobile" role="navigation">
+				{% include "menu.twig" with {'menu': menu.mobile} %}
+			</nav>
+		</div>
+
+		<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/jquery.min.js?ver=3.1.0"></script>
+
+		{% block scripts %}
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/modernizr.js?ver=3.3.1"></script>
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/svg4everybody.min.js?ver=2.1.4"></script>
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/picturefill.min.js?ver=3.0.2"></script>
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/jquery.mmenu.all.js?ver=6.1.0"></script>
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/imagesloaded.pkgd.min.js?ver=4.1.0"></script>
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/select2.full.min.js?ver=4.0.3"></script>
+			<script type="text/javascript" src="{{ site.theme.link }}/js/vendor/slick.min.js?ver=1.6.0"></script>
+
+			{% if site.debug %}
+			<script type="text/javascript" src="{{ site.theme.link }}/js/build/scripts.js"></script>
+			{% else %}
+			<script type="text/javascript" src="{{ site.theme.link }}/js/build/scripts.min.js"></script>
 			{% endif %}
-		</section>
-
-		{% block footer %}
-			<footer id="footer">
-				{% include 'footer.twig' %}
-			</footer>
-			{{ function('wp_footer') }}
 		{% endblock %}
+
+		{{ function('wp_footer') }}
 	</body>
 </html>

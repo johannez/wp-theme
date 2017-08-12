@@ -22,6 +22,20 @@
  */
 
 $context = Timber::get_context();
-$post = new TimberPost();
-$context['post'] = $post;
-Timber::render( array( 'page-' . $post->post_name . '.twig', 'page.twig' ), $context );
+$page = new TimberPost();
+
+$context['page'] = $page;
+
+switch ($page->ID) {
+//    case 999: // Home page
+//
+//        Timber::render( array('page/home.twig' ), $context );
+//        break;
+
+    default:
+        $context['body_class'] .= ' page--default';
+
+
+        Timber::render( array('page/default.twig' ), $context );
+}
+

@@ -1,0 +1,25 @@
+<header id="header" >
+
+    <div id="logo" role="banner">
+        <a class="logo__link" href="{{ site.url }}" rel="home">
+            <img src="{{ site.theme.link }}/img/logo.svg" alt="Logo" class="logo-img">
+        </a>
+    </div>
+
+    <nav id="nav-main" class="nav-main navigation" role="navigation">
+        {% include "menu.twig" with {'menu': menu.main.get_items} %}
+    </nav>
+
+    {#<div id="trigger-search-wrapper">#}
+        {#<a href="#search">#}
+            {#<svg class="icon-search"><use xlink:href="{{ site.theme.link }}/img/icons.svg#icon-search-icon"></use></svg>#}
+        {#</a>#}
+    {#</div>#}
+
+    {#<div id="trigger-mobile-menu-wrapper">#}
+        {#<a href="#nav-mobile">#}
+            {#<svg class="icon-bars"><use xlink:href="{{ site.theme.link }}/img/icons.svg#icon-bars"></use></svg>#}
+        {#</a>#}
+    {#</div>#}
+
+</header>

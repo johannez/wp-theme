@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% include 'partials/page-header.twig' %}
+
+	<article class="page" id="page-{{ page.ID }}">
+		<div class="container">
+			<section class="page__header">
+				<h1 class="page__title">Page Not Found</h1>
+			</section>
+
+			<section class="page__content">
+
+				<div class="page__body">Sorry, we couldn't find what you're looking for.</div>
+
+			</section>
+		</div>
+	</article>
+{% endblock %}
