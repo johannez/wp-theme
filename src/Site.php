@@ -1,6 +1,6 @@
 <?php
 
-class StarterSite extends TimberSite {
+class Site extends TimberSite {
 
     public function __construct() {
         add_theme_support('post-formats');
@@ -11,6 +11,7 @@ class StarterSite extends TimberSite {
         add_filter('timber_context', [$this, 'addToContext']);
         add_filter('get_twig', [$this, 'addToTwig']);
         add_filter('login_headerurl', [$this, 'logoUrl']);
+        add_filter('default_hidden_meta_boxes', [$this, 'hideMetaBox'], 10, 2);
 
         add_action('init', [$this, 'removeRoles']);
         add_action('init', [$this, 'editorStyles']);
@@ -29,6 +30,21 @@ class StarterSite extends TimberSite {
 //        add_image_size('page-banner', 1600, 510, true);
 //        add_image_size('page-banner-md', 1100, 450, true);
 //        add_image_size('page-banner-sm', 600, 450, true);
+    }
+
+    public function hideMetaBox($hidden, $screen) {
+        // $post_types = [
+        //     'person'
+        // ];
+
+        // if ( ('post' == $screen->base) && in_array($screen->id, $post_types) ){
+        //     //lets hide everything
+        //     $hidden = [
+        //         'person_rolesdiv'
+        //     ];
+
+        // }
+        // return $hidden;
     }
 
     protected function routes()
