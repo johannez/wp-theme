@@ -13,11 +13,12 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+  background: white;
 }
 
 .container {
-  padding: 0 2%;
-  max-width: 1200px;
+  padding: 0 $small-spacing;
+  max-width: $site-width;
   margin: 0 auto;
 }
 

@@ -4,7 +4,7 @@ $medium-screen: 768px;
 $large-screen: 1200px;
 
 // Typography
-$base-font-family: 'Arial', 'sans';
+$base-font-family: 'Ubuntu', 'sans';
 $heading-font-family: $base-font-family;
 
 // Line height
@@ -16,6 +16,7 @@ $base-border-radius: 3px;
 $base-spacing: 1.5em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
+$site-width: 1200px;
 
 // Colors
 $blue: #1565c0;

@@ -7,7 +7,7 @@
     {#</div>#}
 
     <nav id="nav-main" class="nav-main navigation" role="navigation">
-        {% include "menu.twig" with {'menu': menu.main.get_items} %}
+        {% include "menu.twig" with {'menu': menu.main} %}
     </nav>
 
     {#<div id="trigger-search-wrapper">#}
@@ -16,10 +16,11 @@
         {#</a>#}
     {#</div>#}
 
-    {#<div id="trigger-mobile-menu-wrapper">#}
-        {#<a href="#nav-mobile">#}
+    <div id="trigger-mobile-menu-wrapper">
+        <a href="#nav-mobile">
+            Menu
             {#<svg class="icon-bars"><use xlink:href="{{ site.theme.link }}/img/icons.svg#icon-bars"></use></svg>#}
-        {#</a>#}
-    {#</div>#}
+        </a>
+    </div>
 
 </header>

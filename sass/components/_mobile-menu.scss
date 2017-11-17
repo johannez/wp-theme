@@ -1,0 +1,9 @@
+#trigger-mobile-menu-wrapper {
+  display: inline-block;
+}
+
+@include screen-medium-up {
+  #trigger-mobile-menu-wrapper {
+    display: none;
+  }
+}

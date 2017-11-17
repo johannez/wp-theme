@@ -1,0 +1,27 @@
+#nav-main {
+  display: none;
+
+  ul {
+    margin: auto;
+    display: flex;
+    display: -ms-flexbox;
+  }
+
+  li {
+    a {
+      text-transform: uppercase;
+      display: block;
+      padding: 10px;
+
+      &:hover {
+        color: $action-color;
+      }
+    }
+  }
+}
+
+@include screen-medium-up {
+  #nav-main {
+    display: inline-block;
+  }
+}

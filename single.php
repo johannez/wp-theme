@@ -13,27 +13,19 @@ $context = Timber::get_context();
 $post = Timber::query_post();
 $context['post'] = $post;
 
-
-$header_image = $post->get_image('header_image');
-if ($header_image->ID){
-    $context['header_image'] = $header_image;
-}
-
-if ($header_text = $post->get_field('header_text')) {
-    $context['header_text'] = $header_text;
-}
-
 if ( post_password_required( $post->ID ) ) {
     Timber::render( 'single-password.twig', $context );
 } else {
-    switch ($post->post_type) {
-//        case 'post':
-//            $f_view = 'SITE_' . $post->post_type . '_get_single';
-//            $context[$post->post_type] = $f_view($post);
-//            Timber::render($post->post_type . '/view.twig', $context);
-//            break;
+    $site = $context['site'];
+    $viewMethod = 'view' . ucfirst($post->post_type);
 
-        default:
-            Timber::render( array( 'single.twig' ), $context );
+    // Check if there is template and a function for this post type that
+    // formats the raw data.
+    if (method_exists($site, $viewMethod)) {
+        $context[$post->post_type] = $site->{$viewMethod}($post);
+        Timber::render($post->post_type . '/view.twig', $context);
+    }
+    else {
+        Timber::render( array( 'single.twig' ), $context );
     }
 }

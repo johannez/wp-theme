@@ -12,12 +12,16 @@ if ( ! class_exists( 'Timber' ) ) {
 	return;
 }
 
-require_once 'src/Site.php';
+// Autoload our classes
+spl_autoload_register(function ($class) {
+    $file_path = __DIR__ . '/src/' . $class . '.php';
+
+    if (file_exists($file_path)) {
+        require_once $file_path;
+    }
+});
 
 Timber::$dirname = array('templates', 'views');
 
 // Initialize the global site and settings.
 $site = new Site();
-
-// Initialize custom post types.
-// $blog = new Blog();

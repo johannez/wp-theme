@@ -187,16 +187,4 @@ module.exports = function (grunt) {
         'svgmin'
     ]);
 
-    grunt.registerTask('watch', [
-        'clean',
-        'sass',
-        'postcss',
-        'cssmin',
-        'concat',
-        'uglify',
-        'imagemin',
-        'svgmin',
-        'notify:watch',
-        'watch'
-    ]);
 };
